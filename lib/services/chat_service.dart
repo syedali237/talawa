@@ -107,7 +107,15 @@ class ChatService {
 
     final result = await _dbFunctions.gqlAuthQuery(query);
 
-    final directMessageList = result.data?['directChatsByUserID'] as List;
+    // final directMessageList = result.data?['directChatsByUserID'] as List;
+    final directMessageList = result.data?['chatsByUser'] as List<dynamic>? ??
+        result.data?['directChatsByUserID'] as List<dynamic>? ??
+        <dynamic>[];
+
+    if (directMessageList.isEmpty) {
+      debugPrint('No direct chats found for user: $userId');
+      return;
+    }
 
     // loop through the result [directMessageList]
     // and append the element to the directChat.

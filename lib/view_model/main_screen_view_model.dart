@@ -31,7 +31,7 @@ import 'package:tutorial_coach_mark/tutorial_coach_mark.dart';
 class MainScreenViewModel extends BaseModel {
   /// static variables.
   static final GlobalKey<ScaffoldState> scaffoldKey =
-      GlobalKey<ScaffoldState>();
+      GlobalKey<ScaffoldState>(debugLabel: "MainScreenScaffold");
 
   /// static variables.
   final GlobalKey keyBNHome = GlobalKey(debugLabel: "HomeTab");
